@@ -20,6 +20,10 @@ A sokoban game, based on [Warehouse(Adri314)](https://arcade.makecode.com/96809-
 ![8~ tomb theme](https://github.com/AqeeAqee/sokoban/blob/master/screenshot_Sokoban_TombTheme.png)
 > Open this page at [https://aqeeaqee.github.io/sokoban/](https://aqeeaqee.github.io/sokoban/)
 
+# TODO
+- More levels
+- Actor walking animation, with 4 sides facing
+
 
 ## Edit this project ![Build status badge](https://github.com/aqeeaqee/sokoban/workflows/MakeCode/badge.svg)
 
