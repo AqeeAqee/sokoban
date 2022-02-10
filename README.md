@@ -22,6 +22,7 @@ A sokoban game, based on [Warehouse(Adri314)](https://arcade.makecode.com/96809-
 
 # TODO
 - More level maps
+- Some complex map support, e.g. box on goal tile already at start
 - Actor walking animation, with 4 sides facing
 
 
