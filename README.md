@@ -21,7 +21,7 @@ A sokoban game, based on [Warehouse(Adri314)](https://arcade.makecode.com/96809-
 > Open this page at [https://aqeeaqee.github.io/sokoban/](https://aqeeaqee.github.io/sokoban/)
 
 # TODO
-- More levels
+- More level maps
 - Actor walking animation, with 4 sides facing
 
 
