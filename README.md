@@ -13,7 +13,10 @@ A sokoban game, based on [Warehouse(Adri314)](https://arcade.makecode.com/96809-
 - Count-down standard step number ( of me, 🙃 ) as "score"
 - To minimise blocks, "reblocked" almost all functions
 
+**Level 1~7 grass theme**
 ![1~7 grass theme](https://github.com/AqeeAqee/sokoban/blob/master/screenshot_Sokoban_GrassTheme.png)
+
+**Level 8~ tomb theme**
 ![8~ tomb theme](https://github.com/AqeeAqee/sokoban/blob/master/screenshot_Sokoban_TombTheme.png)
 > Open this page at [https://aqeeaqee.github.io/sokoban/](https://aqeeaqee.github.io/sokoban/)
 
