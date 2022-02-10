@@ -1,16 +1,22 @@
  
+A sokoban game, based on [Warehouse(Adri314)](https://arcade.makecode.com/96809-62283-14224-22183)
 
+# What not change
+- To appreciate Adri314, I keeped 3 welcome splash images
+- Levels
+- Basic code frame
 
+# What's New
+- Colorful tiles, all come from arcade inside.
+- Animate moving
+- Multi themes. 2 by now, can be more
+- Count-down standard step number ( of me, 🙃 ) as "score"
+- To minimise blocks, "reblocked" almost all functions
+
+![1~7 grass theme](https://github.com/AqeeAqee/sokoban/blob/master/screenshot_Sokoban_GrassTheme.png)
+![8~ tomb theme](https://github.com/AqeeAqee/sokoban/blob/master/screenshot_Sokoban_TombTheme.png)
 > Open this page at [https://aqeeaqee.github.io/sokoban/](https://aqeeaqee.github.io/sokoban/)
 
-## Use as Extension
-
-This repository can be added as an **extension** in MakeCode.
-
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/aqeeaqee/sokoban** and import
 
 ## Edit this project ![Build status badge](https://github.com/aqeeaqee/sokoban/workflows/MakeCode/badge.svg)
 
@@ -25,7 +31,9 @@ To edit this repository in MakeCode.
 This image shows the blocks code from the last commit in master.
 This image may take a few minutes to refresh.
 
-![A rendered view of the blocks](https://github.com/aqeeaqee/sokoban/raw/master/.github/makecode/blocks.png)
+![A rendered view of the blocks] (https://github.com/AqeeAqee/sokoban/blob/master/arcade-Sokoban-blocks.png)
+
+~~(https://github.com/aqeeaqee/sokoban/raw/master/.github/makecode/blocks.png)~~ not work
 
 #### Metadata (used for search, rendering)
 
