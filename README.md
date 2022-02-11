@@ -12,6 +12,7 @@ A sokoban game, based on [Warehouse(Adri314)](https://forum.makecode.com/t/wareh
 - Multi themes. 2 by now, can be more
 - Count-down standard step number ( of me, 🙃 ) as "score"
 - To minimise blocks, "reblocked" almost all functions
+- Removed extensions temporerily, pxt-button-combos etc.
 
 **Level 1~7 grass theme**
 ![1~7 grass theme](https://github.com/AqeeAqee/sokoban/blob/master/screenshot_Sokoban_GrassTheme.png)
