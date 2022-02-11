@@ -660,6 +660,6 @@ steps = [
 0
 ]
 info.setLife(0)
-level = maps.length
+level = 1
 setLevel(level)
 controllerEnable = true
