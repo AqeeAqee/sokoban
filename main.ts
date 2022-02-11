@@ -5,10 +5,8 @@ namespace SpriteKind {
     export const Gold = SpriteKind.create()
 }
 function setLevel (level: number) {
+    sprites.destroyAllSpritesOfKind(SpriteKind.Crate)
     game.splash("Level " + level, "\"B\" to reset level")
-    for (let box of sprites.allOfKind(SpriteKind.Crate)) {
-        box.destroy()
-    }
     tiles.setCurrentTilemap(maps[level - 1])
     info.setScore(steps[level - 1])
     if (level < 8) {
@@ -45,50 +43,51 @@ function setLevel (level: number) {
         tiles.placeOnTile(box, locBoxStart)
     }
     tiles.placeOnRandomTile(sokoban, tilePlayer)
-    controllerEnable = true
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Crate, function (sprite, otherSprite) {
-    aniMove(otherSprite)
-    if (otherSprite.tileKindAt(TileDirection.Center, tileGoal)) {
-        otherSprite.setImage(img`
-            . b b b b b b b b b b b b b b . 
-            b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
-            b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-            b e e 4 4 4 4 4 4 4 4 4 4 e e b 
-            b b b b b b b d d b b b b b b b 
-            . b b b b b b c c b b b b b b . 
-            b c c c c c b c c b c c c c c b 
-            b c c c c c c b b c c c c c c b 
-            b c c c c c c c c c c c c c c b 
-            b c c c c c c c c c c c c c c b 
-            b b b b b b b b b b b b b b b b 
-            b e e e e e e e e e e e e e e b 
-            b e e e e e e e e e e e e e e b 
-            b c e e e e e e e e e e e e c b 
-            b b b b b b b b b b b b b b b b 
-            . b b . . . . . . . . . . b b . 
-            `)
-    } else {
-        otherSprite.setImage(img`
-            . . b b b b b b b b b b b b . . 
-            . b e 4 4 4 4 4 4 4 4 4 4 e b . 
-            b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-            b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-            b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-            b e e 4 4 4 4 4 4 4 4 4 4 e e b 
-            b e e e e e e e e e e e e e e b 
-            b e e e e e e e e e e e e e e b 
-            b b b b b b b d d b b b b b b b 
-            c b b b b b b c c b b b b b b c 
-            c c c c c c b c c b c c c c c c 
-            b e e e e e c b b c e e e e e b 
-            b e e e e e e e e e e e e e e b 
-            b c e e e e e e e e e e e e c b 
-            b b b b b b b b b b b b b b b b 
-            . b b . . . . . . . . . . b b . 
-            `)
+    if (controllerEnable) {
+        aniMove(otherSprite)
+        if (otherSprite.tileKindAt(TileDirection.Center, tileGoal)) {
+            otherSprite.setImage(img`
+                . b b b b b b b b b b b b b b . 
+                b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
+                b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+                b e e 4 4 4 4 4 4 4 4 4 4 e e b 
+                b b b b b b b d d b b b b b b b 
+                . b b b b b b c c b b b b b b . 
+                b c c c c c b c c b c c c c c b 
+                b c c c c c c b b c c c c c c b 
+                b c c c c c c c c c c c c c c b 
+                b c c c c c c c c c c c c c c b 
+                b b b b b b b b b b b b b b b b 
+                b e e e e e e e e e e e e e e b 
+                b e e e e e e e e e e e e e e b 
+                b c e e e e e e e e e e e e c b 
+                b b b b b b b b b b b b b b b b 
+                . b b . . . . . . . . . . b b . 
+                `)
+        } else {
+            otherSprite.setImage(img`
+                . . b b b b b b b b b b b b . . 
+                . b e 4 4 4 4 4 4 4 4 4 4 e b . 
+                b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+                b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+                b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+                b e e 4 4 4 4 4 4 4 4 4 4 e e b 
+                b e e e e e e e e e e e e e e b 
+                b e e e e e e e e e e e e e e b 
+                b b b b b b b d d b b b b b b b 
+                c b b b b b b c c b b b b b b c 
+                c c c c c c b c c b c c c c c c 
+                b e e e e e c b b c e e e e e b 
+                b e e e e e e e e e e e e e e b 
+                b c e e e e e e e e e e e e c b 
+                b b b b b b b b b b b b b b b b 
+                . b b . . . . . . . . . . b b . 
+                `)
+        }
+        isSolved()
     }
-    isSolved()
 })
 controller.anyButton.onEvent(ControllerButtonEvent.Pressed, function () {
     if (controllerEnable) {
@@ -150,12 +149,8 @@ function isPlayerBlocked () {
     } else {
         if (locIsBox()) {
             loc = locNext2
-            if (locIsWall()) {
-                sokoban.sayText("Box blocked by the wall", 800)
-                return true
-            }
-            if (locIsBox()) {
-                sokoban.sayText("Box blocked by another Box", 800)
+            if (locIsWall() || locIsBox()) {
+                sokoban.sayText("Box is blocked", 800)
                 return true
             }
         }
@@ -176,12 +171,31 @@ function isSolved () {
             game.over(true, effects.confetti)
         } else {
             controllerEnable = false
+            for (let index = 0; index < 4; index++) {
+                sokoban.changeScale(1, ScaleAnchor.Middle)
+                pause(50)
+            }
             music.playMelody("C - C G C5 C5 - - ", 480)
             level += 1
             setLevel(level)
+            for (let index = 0; index < 4; index++) {
+                sokoban.changeScale(-1, ScaleAnchor.Middle)
+                pause(50)
+            }
+            controllerEnable = true
         }
     }
 }
+controller.A.onEvent(ControllerButtonEvent.Repeated, function () {
+    if (controllerEnable) {
+        countRepeatA += 1
+        if (countRepeatA > 111) {
+            countRepeatA = 0
+            setLevel(game.askForNumber("Level=?", 2))
+        }
+    }
+})
+let countRepeatA = 0
 let boxesInTargets = 0
 let dy = 0
 let dx = 0
@@ -189,12 +203,12 @@ let aniStepCount = 0
 let loc: tiles.Location = null
 let locNext2: tiles.Location = null
 let locNext: tiles.Location = null
-let controllerEnable = false
 let box: Sprite = null
 let tileFloor: Image = null
 let tileGoal: Image = null
 let tileBox: Image = null
 let tilePlayer: Image = null
+let controllerEnable = false
 let level = 0
 let steps: number[] = []
 let maps: tiles.TileMapData[] = []
@@ -588,7 +602,7 @@ game.setDialogCursor(img`
     e e e e e e e e e e e e e e e e 
     `)
 sokoban = sprites.create(img`
-    7 . . . . . f f f f . . . . . . 
+    . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
     . . . f f f 2 2 2 2 f f f . . . 
     . . f f f e e e e e e f f f . . 
@@ -603,7 +617,7 @@ sokoban = sprites.create(img`
     . . 4 d f 2 2 2 2 2 2 f d 4 . . 
     . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
     . . . . . f f f f f f . . . . . 
-    . . . . . f f . . f f . . . . 7 
+    . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
 scene.cameraFollowSprite(sokoban)
 sokoban.setStayInScreen(true)
@@ -617,7 +631,10 @@ tilemap`level21`,
 tilemap`level22`,
 tilemap`level23`,
 tilemap`level24`,
-tilemap`level25`
+tilemap`level25`,
+tilemap`level26`,
+tilemap`level27`,
+tilemap`level28`
 ]
 steps = [
 4,
@@ -628,7 +645,11 @@ steps = [
 41,
 33,
 33,
-103
+103,
+0,
+97,
+0
 ]
 level = 1
 setLevel(level)
+controllerEnable = true
