@@ -170,16 +170,28 @@ function isSolved () {
                 pause(50)
             }
             music.playMelody("C - C G C5 C5 - - ", 480)
-            level += 1
-            setLevel(level)
+            if (info.score() > 0) {
+                info.changeLifeBy(5)
+            } else if (info.score() == 0) {
+                info.changeLifeBy(3)
+            } else if (info.score() > steps[level - 1] * -0.2) {
+                info.changeLifeBy(2)
+            } else {
+                info.changeLifeBy(1)
+            }
             for (let index = 0; index < 4; index++) {
                 sokoban.changeScale(-1, ScaleAnchor.Middle)
                 pause(50)
             }
             controllerEnable = true
+            level += 1
+            setLevel(level)
         }
     }
 }
+info.onLifeZero(function () {
+	
+})
 controller.A.onEvent(ControllerButtonEvent.Repeated, function () {
     if (controllerEnable) {
         countRepeatA += 1
@@ -628,7 +640,8 @@ tilemap`level25`,
 tilemap`level26`,
 tilemap`level27`,
 tilemap`level28`,
-tilemap`level30`
+tilemap`level30`,
+tilemap`level31`
 ]
 steps = [
 4,
@@ -643,8 +656,10 @@ steps = [
 0,
 97,
 0,
+0,
 0
 ]
-level = 1
+info.setLife(0)
+level = maps.length
 setLevel(level)
 controllerEnable = true
