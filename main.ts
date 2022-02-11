@@ -13,12 +13,10 @@ function setLevel (level: number) {
         tilePlayer = sprites.castle.tileGrass1
         tileBox = assets.tile`myTile1`
         tileGoal = sprites.castle.tileGrass2
-        tileFloor = sprites.castle.tileGrass3
     } else {
         tilePlayer = sprites.dungeon.floorLight0
         tileBox = sprites.dungeon.floorLight5
         tileGoal = sprites.dungeon.collectibleInsignia
-        tileFloor = sprites.dungeon.floorLight2
     }
     for (let locBoxStart of tiles.getTilesByType(tileBox)) {
         box = sprites.create(img`
@@ -127,10 +125,6 @@ function tryMoveOneStep () {
         aniMove(sokoban)
     }
 }
-// return !(s.tileKindAt(dir, sprites.castle.tileGrass1) || s.tileKindAt(dir, sprites.castle.tileGrass2) || s.tileKindAt(dir, sprites.castle.tileGrass3) || s.tileKindAt(dir, sprites.builtin.forestTiles0))
-function locIsWall () {
-    return !(tiles.tileAtLocationEquals(loc, tilePlayer) || tiles.tileAtLocationEquals(loc, tileBox) || tiles.tileAtLocationEquals(loc, tileGoal) || tiles.tileAtLocationEquals(loc, tileFloor))
-}
 function aniMove (sprite: Sprite) {
     aniStepCount = 8
     dx = locNext.x - sokoban.tilemapLocation().x
@@ -143,13 +137,13 @@ function aniMove (sprite: Sprite) {
 }
 function isPlayerBlocked () {
     loc = locNext
-    if (locIsWall()) {
+    if (tiles.tileAtLocationIsWall(loc)) {
         // sokoban.sayText("Wall", 1000)
         return true
     } else {
         if (locIsBox()) {
             loc = locNext2
-            if (locIsWall() || locIsBox()) {
+            if (tiles.tileAtLocationIsWall(loc) || locIsBox()) {
                 sokoban.sayText("Box is blocked", 800)
                 return true
             }
@@ -204,7 +198,6 @@ let loc: tiles.Location = null
 let locNext2: tiles.Location = null
 let locNext: tiles.Location = null
 let box: Sprite = null
-let tileFloor: Image = null
 let tileGoal: Image = null
 let tileBox: Image = null
 let tilePlayer: Image = null
@@ -634,7 +627,8 @@ tilemap`level24`,
 tilemap`level25`,
 tilemap`level26`,
 tilemap`level27`,
-tilemap`level28`
+tilemap`level28`,
+tilemap`level30`
 ]
 steps = [
 4,
@@ -648,6 +642,7 @@ steps = [
 103,
 0,
 97,
+0,
 0
 ]
 level = 1
