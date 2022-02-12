@@ -596,6 +596,25 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `, [myTiles.transparency16,sprites.dungeon.collectibleInsignia,sprites.dungeon.floorLight2,sprites.dungeon.floorLight0,sprites.dungeon.floorLight5,sprites.dungeon.purpleOuterNorth0,sprites.dungeon.purpleOuterEast0,sprites.dungeon.purpleOuterWest0,sprites.dungeon.darkGroundCenter,sprites.dungeon.purpleOuterNorthEast,sprites.dungeon.purpleOuterSouthEast,sprites.dungeon.purpleOuterNorthWest,sprites.dungeon.purpleInnerSouthEast,sprites.dungeon.purpleInnerNorthEast,sprites.dungeon.purpleOuterSouth1,sprites.dungeon.purpleOuterSouthWest,sprites.dungeon.purpleInnerNorthWest,sprites.dungeon.purpleInnerSouthWest,sprites.dungeon.purpleOuterNorth1], TileScale.Sixteen);
+            case "level32":
+            case "level32":return tiles.createTilemap(hex`100010001111111111111111111111111111111111111111111111110c0a0a0a1011111111110c0a0a0a0a100701010109101111110c0b01110104090b01020201061111110701010101020101010101010611111107010102010108050d010101061111110711110111080e0c0b0211080e1111110701020101090a0b010303061111111107010201020102010303030611111111070101010108050d03030306111111110701020201061107030303061111111107010108050e110f0505050e111111110f05050e1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111`, img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . 2 2 2 2 2 . . . 
+. . 2 2 2 2 2 2 2 . . . 2 2 . . 
+. 2 2 . 2 . . 2 2 . . . . 2 . . 
+. 2 . . . . . . . . . . . 2 . . 
+. 2 . . . . . 2 2 2 . . . 2 . . 
+. 2 2 2 . 2 2 2 2 2 . 2 2 2 . . 
+. 2 . . . . 2 2 2 . . . 2 . . . 
+. 2 . . . . . . . . . . 2 . . . 
+. 2 . . . . 2 2 2 . . . 2 . . . 
+. 2 . . . . 2 . 2 . . . 2 . . . 
+. 2 . . 2 2 2 . 2 2 2 2 2 . . . 
+. 2 2 2 2 . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, [myTiles.transparency16,sprites.dungeon.floorLight2,sprites.dungeon.floorLight5,sprites.dungeon.collectibleInsignia,sprites.dungeon.floorLight0,sprites.dungeon.purpleOuterNorth0,sprites.dungeon.purpleOuterWest0,sprites.dungeon.purpleOuterEast0,sprites.dungeon.purpleOuterNorthWest,sprites.dungeon.purpleOuterSouthEast,sprites.dungeon.purpleOuterSouth1,sprites.dungeon.purpleOuterSouthWest,sprites.dungeon.purpleInnerNorthWest,sprites.dungeon.purpleOuterNorthEast,sprites.dungeon.purpleInnerSouthEast,sprites.dungeon.purpleInnerSouthWest,sprites.dungeon.purpleInnerNorthEast,sprites.dungeon.darkGroundCenter], TileScale.Sixteen);
         }
         return null;
     })

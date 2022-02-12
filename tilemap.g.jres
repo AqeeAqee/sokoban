@@ -491,6 +491,32 @@
         ],
         "displayName": "level31"
     },
+    "level32": {
+        "id": "level32",
+        "mimeType": "application/mkcd-tilemap",
+        "data": "MTAxMDAwMTAwMDExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTBjMGEwYTBhMTAxMTExMTExMTExMGMwYTBhMGEwYTEwMDcwMTAxMDEwOTEwMTExMTExMGMwYjAxMTEwMTA0MDkwYjAxMDIwMjAxMDYxMTExMTEwNzAxMDEwMTAxMDIwMTAxMDEwMTAxMDEwNjExMTExMTA3MDEwMTAyMDEwMTA4MDUwZDAxMDEwMTA2MTExMTExMDcxMTExMDExMTA4MGUwYzBiMDIxMTA4MGUxMTExMTEwNzAxMDIwMTAxMDkwYTBiMDEwMzAzMDYxMTExMTExMTA3MDEwMjAxMDIwMTAyMDEwMzAzMDMwNjExMTExMTExMDcwMTAxMDEwMTA4MDUwZDAzMDMwMzA2MTExMTExMTEwNzAxMDIwMjAxMDYxMTA3MDMwMzAzMDYxMTExMTExMTA3MDEwMTA4MDUwZTExMGYwNTA1MDUwZTExMTExMTExMGYwNTA1MGUxMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMjIyMjAyMDAwMDIyMjIyMjAyMDAyMjAwMjAwMjAyMjAwMjAwMjAwMDIwMDAwMDAwMDAwMDIwMDAyMDAwMDAyMDIyMDAyMDAwMjAyMjIwMjIyMjIwMjIwMDIwMDAwMDIyMDIwMDAyMDAyMDAwMDAwMDAwMDAwMjAwMjAwMDAwMjIwMjAwMDIwMDIwMDAwMDAyMDIwMDAyMDAyMDAwMjIwMjIyMjIwMjAwMjAyMjAyMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMA==",
+        "tileset": [
+            "myTiles.transparency16",
+            "sprites.dungeon.floorLight2",
+            "sprites.dungeon.floorLight5",
+            "sprites.dungeon.collectibleInsignia",
+            "sprites.dungeon.floorLight0",
+            "sprites.dungeon.purpleOuterNorth0",
+            "sprites.dungeon.purpleOuterWest0",
+            "sprites.dungeon.purpleOuterEast0",
+            "sprites.dungeon.purpleOuterNorthWest",
+            "sprites.dungeon.purpleOuterSouthEast",
+            "sprites.dungeon.purpleOuterSouth1",
+            "sprites.dungeon.purpleOuterSouthWest",
+            "sprites.dungeon.purpleInnerNorthWest",
+            "sprites.dungeon.purpleOuterNorthEast",
+            "sprites.dungeon.purpleInnerSouthEast",
+            "sprites.dungeon.purpleInnerSouthWest",
+            "sprites.dungeon.purpleInnerNorthEast",
+            "sprites.dungeon.darkGroundCenter"
+        ],
+        "displayName": "level32"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",

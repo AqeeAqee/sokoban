@@ -179,6 +179,7 @@ function isSolved () {
             } else {
                 info.changeLifeBy(1)
             }
+            pause(1000)
             for (let index = 0; index < 4; index++) {
                 sokoban.changeScale(-1, ScaleAnchor.Middle)
                 pause(50)
@@ -189,6 +190,8 @@ function isSolved () {
         }
     }
 }
+// required for life=0,
+// Don't delete!
 info.onLifeZero(function () {
 	
 })
@@ -641,7 +644,8 @@ tilemap`level26`,
 tilemap`level27`,
 tilemap`level28`,
 tilemap`level30`,
-tilemap`level31`
+tilemap`level31`,
+tilemap`level32`
 ]
 steps = [
 4,
