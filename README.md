@@ -23,7 +23,9 @@ A sokoban game, based on [Warehouse(Adri314)](https://forum.makecode.com/t/wareh
 
 # TODO
 - More level maps
+- Easier map definition, use player/box image directly, instead of vary floors
 - Some complex map support, e.g. box on goal tile already at start
+- Stars earned after each level, and save High Score into storage 
 - Actor walking animation, with 4 sides facing
 
 
