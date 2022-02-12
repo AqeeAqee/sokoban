@@ -1,5 +1,5 @@
  
-A sokoban game, based on [Warehouse(Adri314)](https://forum.makecode.com/t/warehouse-updated/658)
+A sokoban/warehouse game running on [Makecode Arcade platform](https://arcade.makecode.com/), based on [Warehouse(Adri314)](https://forum.makecode.com/t/warehouse-updated/658)
 
 # What not change
 - To appreciate Adri314, I keeped 3 welcome splash images
