@@ -3,6 +3,8 @@ namespace SpriteKind {
     export const Goal = SpriteKind.create()
     export const Floor = SpriteKind.create()
     export const Gold = SpriteKind.create()
+    export const Valentine = SpriteKind.create()
+    export const Arrow = SpriteKind.create()
 }
 function setLevel (level: number) {
     sprites.destroyAllSpritesOfKind(SpriteKind.Crate)
@@ -19,7 +21,7 @@ function setLevel (level: number) {
         tileGoal = sprites.dungeon.collectibleInsignia
     }
     for (let locBoxStart of tiles.getTilesByType(tileBox)) {
-        box = sprites.create(img`
+        box2 = sprites.create(img`
             . . b b b b b b b b b b b b . . 
             . b e 4 4 4 4 4 4 4 4 4 4 e b . 
             b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
@@ -37,8 +39,8 @@ function setLevel (level: number) {
             b b b b b b b b b b b b b b b b 
             . b b . . . . . . . . . . b b . 
             `, SpriteKind.Crate)
-        box.z = 1
-        tiles.placeOnTile(box, locBoxStart)
+        box2.z = 1
+        tiles.placeOnTile(box2, locBoxStart)
     }
     tiles.placeOnRandomTile(sokoban, tilePlayer)
 }
@@ -46,6 +48,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Crate, function (sprite, otherSp
     if (controllerEnable) {
         aniMove(otherSprite)
         if (otherSprite.tileKindAt(TileDirection.Center, tileGoal)) {
+            music.baDing.play()
             otherSprite.setImage(img`
                 . b b b b b b b b b b b b b b . 
                 b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
@@ -154,7 +157,9 @@ function isPlayerBlocked () {
 }
 // initTiles()
 function isSolved () {
-    boxesInTargets = 0
+    let scoreAdding:number
+let projectile:Sprite
+boxesInTargets = 0
     for (let box of sprites.allOfKind(SpriteKind.Crate)) {
         if (box.tileKindAt(TileDirection.Center, tileGoal)) {
             boxesInTargets += 1
@@ -171,22 +176,73 @@ function isSolved () {
             }
             music.playMelody("C - C G C5 C5 - - ", 480)
             if (info.score() > 0) {
-                info.changeLifeBy(5)
+                scoreAdding = 5
+                game.setDialogFrame(img`
+                    e e e e e e e e e e e e e e e e 
+                    e e e e e e e e e e e e e e e e 
+                    e e 4 e 4 4 4 4 4 4 4 4 e 4 e e 
+                    e e e e 4 4 4 4 4 4 4 4 e e e e 
+                    e e 4 4 4 4 4 4 4 4 4 4 4 4 e e 
+                    e e 4 4 4 4 4 4 4 4 4 4 4 4 e e 
+                    e e 4 4 4 4 4 4 4 4 4 4 4 4 e e 
+                    e e 4 4 4 4 4 4 4 4 4 4 4 4 e e 
+                    e e 4 4 4 4 4 4 4 4 4 4 4 4 e e 
+                    e e 4 4 4 4 4 4 4 4 4 4 4 4 e e 
+                    e e 4 4 4 4 4 4 4 4 4 4 4 4 e e 
+                    e e 4 4 4 4 4 4 4 4 4 4 4 4 e e 
+                    e e e e 4 4 4 4 4 4 4 4 e e e e 
+                    e e 4 e 4 4 4 4 4 4 4 4 e 4 e e 
+                    e e e e e e e e e e e e e e e e 
+                    e e e e e e e e e e e e e e e e 
+                    `)
+                game.showLongText("U made a better solution! Tell me how U did it pls, at https://\\nforum.makecode.com\\n/t/12178 \\n Thanks!   ", DialogLayout.Bottom)
             } else if (info.score() == 0) {
-                info.changeLifeBy(3)
+                scoreAdding = 3
             } else if (info.score() > steps[level - 1] * -0.2) {
-                info.changeLifeBy(2)
+                scoreAdding = 2
             } else {
+                scoreAdding = 1
+            }
+            for (let index = 0; index < scoreAdding; index++) {
+                projectile = sprites.createProjectileFromSprite(img`
+                    ....................
+                    ....................
+                    ....................
+                    ....2222...2222.....
+                    ...222222.222222....
+                    ..222222222222222...
+                    ..222222222222222...
+                    ..222222222222222...
+                    ..222222222222222...
+                    ..222222222222222...
+                    ..222222222222222...
+                    ...2222222222222....
+                    ....22222222222.....
+                    .....222222222......
+                    ......2222222.......
+                    .......22222........
+                    ........222.........
+                    .........2..........
+                    .........2..........
+                    ....................
+                    `, sokoban, -100, -100)
+                projectile.setFlag(SpriteFlag.GhostThroughWalls, true)
+                projectile.z = 5
+                projectile.scale = 0.1
+                for (let index = 0; index < 8; index++) {
+                    projectile.scale += 0.3
+                    pause(50)
+                }
                 info.changeLifeBy(1)
             }
             pause(1000)
+            level += 1
+            setLevel(level)
             for (let index = 0; index < 4; index++) {
                 sokoban.changeScale(-1, ScaleAnchor.Middle)
                 pause(50)
             }
             controllerEnable = true
-            level += 1
-            setLevel(level)
         }
     }
 }
@@ -200,7 +256,8 @@ controller.A.onEvent(ControllerButtonEvent.Repeated, function () {
         countRepeatA += 1
         if (countRepeatA > 111) {
             countRepeatA = 0
-            setLevel(game.askForNumber("Level=?", 2))
+            level = Math.constrain(game.askForNumber("Level=?", 2), 1, maps.length)
+            setLevel(level)
         }
     }
 })
@@ -212,7 +269,7 @@ let aniStepCount = 0
 let loc: tiles.Location = null
 let locNext2: tiles.Location = null
 let locNext: tiles.Location = null
-let box: Sprite = null
+let box2: Sprite = null
 let tileGoal: Image = null
 let tileBox: Image = null
 let tilePlayer: Image = null
@@ -660,7 +717,8 @@ steps = [
 0,
 97,
 0,
-0,
+366,
+310,
 0
 ]
 info.setLife(0)
