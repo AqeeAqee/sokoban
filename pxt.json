@@ -1,8 +1,11 @@
 {
-    "name": "Sokoban",
+    "name": "Sokoban_test",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "arcade-minimap": "github:microsoft/arcade-minimap#v0.6.1",
+        "arcade-text": "github:microsoft/arcade-text#v1.3.0",
+        "settings-blocks": "github:microsoft/pxt-settings-blocks#v1.0.0"
     },
     "files": [
         "main.blocks",
@@ -16,7 +19,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.8.17",
+        "target": "1.8.20",
         "targetId": "arcade"
     },
     "supportedTargets": [
