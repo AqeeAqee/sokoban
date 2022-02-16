@@ -8,7 +8,6 @@ namespace SpriteKind {
 }
 function setLevel (level: number) {
     sprites.destroyAllSpritesOfKind(SpriteKind.Crate)
-    game.splash("Level " + level, "\"B\" to reset level")
     tiles.setCurrentTilemap(maps[level - 1])
     info.setScore(steps[level - 1])
     if (level < 8) {
@@ -42,6 +41,7 @@ function setLevel (level: number) {
         box2.z = 1
         tiles.placeOnTile(box2, locBoxStart)
     }
+    game.splash("Level " + level, "\"B\" to reset level")
     tiles.placeOnRandomTile(sokoban, tilePlayer)
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Crate, function (sprite, otherSprite) {
@@ -714,7 +714,7 @@ steps = [
 33,
 33,
 103,
-34,
+28,
 97,
 0,
 366,
