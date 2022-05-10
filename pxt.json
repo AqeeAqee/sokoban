@@ -1,5 +1,5 @@
 {
-    "name": "Sokoban",
+    "name": "Sokoban_NewLevels1-12",
     "version": "1.0.2",
     "description": "",
     "dependencies": {
@@ -17,7 +17,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.8.20",
+        "target": "1.8.22",
         "targetId": "arcade"
     },
     "supportedTargets": [
